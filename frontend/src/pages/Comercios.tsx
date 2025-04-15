@@ -1,18 +1,37 @@
 import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Comercio } from '../types/Comercio';
 
 const Comercios = () => {
   const navigate = useNavigate();
+  const [comercios, setComercios] = useState<Comercio[]>([]);
 
-  // Dados de exemplo - substituir por dados reais da API
-  const comercios = [
-    { id: 1, nome: 'Loja 1', endereco: 'Rua A, 123', telefone: '(11) 1234-5678' },
-    { id: 2, nome: 'Loja 2', endereco: 'Rua B, 456', telefone: '(11) 8765-4321' },
-  ];
+  useEffect(() => {
+    const fetchComercios = async () => {
+      const response = await axios.get<Comercio[]>('http://localhost:8080/api/comercios');
+      try {
+        setComercios(response.data);
+      } catch (error) {
+        console.error('Erro ao buscar comércios:', error);
+      }
+    };
+
+    fetchComercios();
+  }, []);
+
 
   return (
     <div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          marginBottom: '20px',
+        }}
+      >
         <Typography variant="h4">Comércios</Typography>
         <Button
           variant="contained"
@@ -30,6 +49,9 @@ const Comercios = () => {
               <TableCell>Nome</TableCell>
               <TableCell>Endereço</TableCell>
               <TableCell>Telefone</TableCell>
+              <TableCell>Tipo</TableCell>
+              <TableCell>Taxa de Entrega</TableCell>
+              <TableCell>Horário</TableCell>
               <TableCell align="right">Ações</TableCell>
             </TableRow>
           </TableHead>
@@ -39,6 +61,9 @@ const Comercios = () => {
                 <TableCell>{comercio.nome}</TableCell>
                 <TableCell>{comercio.endereco}</TableCell>
                 <TableCell>{comercio.telefone}</TableCell>
+                <TableCell>{comercio.tipoComercio}</TableCell>
+                <TableCell>R${comercio.taxaEntrega}</TableCell>
+                <TableCell>{comercio.horarioFuncionamento}</TableCell>
                 <TableCell align="right">
                   <Button
                     size="small"
@@ -62,6 +87,6 @@ const Comercios = () => {
       </TableContainer>
     </div>
   );
-};
+}
 
 export default Comercios;

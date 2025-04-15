@@ -1,0 +1,12 @@
+com\localcommerce\config\CorsConfig.class
+com\localcommerce\config\OpenApiConfig.class
+com\localcommerce\dto\ItemCardapioDTO.class
+com\localcommerce\controller\ComercioController.class
+com\localcommerce\repository\ComercioRepository.class
+com\localcommerce\config\ModelMapperConfig.class
+com\localcommerce\LocalCommerceApplication.class
+com\localcommerce\model\Comercio.class
+com\localcommerce\service\ComercioService.class
+com\localcommerce\data\DataInitializer.class
+com\localcommerce\model\ItemCardapio.class
+com\localcommerce\dto\ComercioDTO.class

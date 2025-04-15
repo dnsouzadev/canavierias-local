@@ -14,62 +14,88 @@ const Home = () => {
           alignItems: 'center',
           textAlign: 'center',
           py: 8,
+          backgroundColor: 'background.default',
+          borderRadius: 2,
+          boxShadow: 3,
         }}
       >
-        <StorefrontIcon sx={{ fontSize: 60, color: 'primary.main', mb: 2 }} />
-        <Typography variant="h2" component="h1" gutterBottom>
+        <StorefrontIcon sx={{ fontSize: 80, color: 'primary.main', mb: 2 }} />
+        <Typography variant="h3" component="h1" gutterBottom>
           Bem-vindo ao Local Commerce
         </Typography>
-        <Typography variant="h5" color="text.secondary" paragraph>
-          Descubra e explore os melhores comércios locais da sua região
+        <Typography variant="h6" color="text.secondary" paragraph>
+          Descubra os melhores comércios locais e apoie os negócios da sua região.
         </Typography>
         <Box sx={{ mt: 4 }}>
           <Button
             variant="contained"
             size="large"
             onClick={() => navigate('/comercios')}
-            sx={{ mr: 2 }}
+            sx={{
+              px: 4,
+              py: 1.5,
+              fontSize: '1.1rem',
+              backgroundColor: 'primary.main',
+              '&:hover': { backgroundColor: 'primary.dark' },
+            }}
           >
             Explorar Comércios
-          </Button>
-          <Button
-            variant="outlined"
-            size="large"
-            onClick={() => navigate('/comercios/novo')}
-          >
-            Cadastrar Comércio
           </Button>
         </Box>
       </Box>
 
-      <Grid container spacing={4} sx={{ mt: 4 }}>
+      <Grid container spacing={4} sx={{ mt: 6 }}>
         <Grid item xs={12} md={4}>
-          <Box sx={{ textAlign: 'center', p: 3 }}>
+          <Box
+            sx={{
+              textAlign: 'center',
+              p: 4,
+              borderRadius: 2,
+              backgroundColor: 'background.paper',
+              boxShadow: 2,
+            }}
+          >
             <Typography variant="h5" gutterBottom>
               Encontre
             </Typography>
             <Typography color="text.secondary">
-              Descubra comércios locais próximos a você
+              Descubra comércios locais próximos a você.
             </Typography>
           </Box>
         </Grid>
         <Grid item xs={12} md={4}>
-          <Box sx={{ textAlign: 'center', p: 3 }}>
+          <Box
+            sx={{
+              textAlign: 'center',
+              p: 4,
+              borderRadius: 2,
+              backgroundColor: 'background.paper',
+              boxShadow: 2,
+            }}
+          >
             <Typography variant="h5" gutterBottom>
               Explore
             </Typography>
             <Typography color="text.secondary">
-              Conheça detalhes sobre cada estabelecimento
+              Conheça detalhes sobre cada estabelecimento.
             </Typography>
           </Box>
         </Grid>
         <Grid item xs={12} md={4}>
-          <Box sx={{ textAlign: 'center', p: 3 }}>
+          <Box
+            sx={{
+              textAlign: 'center',
+              p: 4,
+              borderRadius: 2,
+              backgroundColor: 'background.paper',
+              boxShadow: 2,
+            }}
+          >
             <Typography variant="h5" gutterBottom>
               Conecte
             </Typography>
             <Typography color="text.secondary">
-              Apoie o comércio local da sua região
+              Apoie o comércio local e fortaleça sua comunidade.
             </Typography>
           </Box>
         </Grid>
