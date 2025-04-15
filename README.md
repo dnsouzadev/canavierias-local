@@ -1,4 +1,4 @@
-# Sistema de Gerenciamento de Comércios
+# CanesFood
 
 Este é um sistema completo para gerenciamento de comércios, desenvolvido com uma arquitetura moderna de frontend e backend.
 
