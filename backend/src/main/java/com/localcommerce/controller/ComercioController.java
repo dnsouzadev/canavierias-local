@@ -17,6 +17,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/api/comercios")
 @Tag(name = "Comércios", description = "API para gerenciamento de comércios locais")
+@CrossOrigin(origins = "*")
 public class ComercioController {
 
     @Autowired
