@@ -1,0 +1,274 @@
+/* Main container */
+.commerce-detail-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+
+  .back-navigation {
+    margin-bottom: 1.5rem;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    color: #4b5563;
+    text-decoration: none;
+    padding: 0.5rem;
+    margin-left: -0.5rem;
+  }
+
+  .back-link svg {
+    margin-right: 0.5rem;
+  }
+
+  .commerce-detail-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  @media (min-width: 1024px) {
+    .commerce-detail-grid {
+      grid-template-columns: 2fr 1fr;
+    }
+  }
+
+  /* Main content */
+  .commerce-detail-image {
+    position: relative;
+    height: 16rem;
+    width: 100%;
+    margin-bottom: 1.5rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+
+  @media (min-width: 768px) {
+    .commerce-detail-image {
+      height: 20rem;
+    }
+  }
+
+  .commerce-detail-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .commerce-detail-info {
+    margin-bottom: 2rem;
+  }
+
+  .commerce-detail-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+  }
+
+  .commerce-detail-title {
+    font-size: 1.875rem;
+    font-weight: 700;
+  }
+
+  .commerce-detail-badge {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    margin-top: 0.5rem;
+    border: 1px solid #e5e7eb;
+    background-color: #f9fafb;
+  }
+
+  .commerce-detail-delivery {
+    text-align: right;
+    margin-top: 0.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    .commerce-detail-delivery {
+      margin-top: 0;
+    }
+  }
+
+  .commerce-detail-price {
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  .commerce-detail-description {
+    color: #6b7280;
+    margin-bottom: 1.5rem;
+  }
+
+  .commerce-detail-contact {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    .commerce-detail-contact {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    font-size: 0.875rem;
+  }
+
+  .contact-item svg {
+    margin-right: 0.5rem;
+    color: #6b7280;
+  }
+
+  /* Menu section */
+  .commerce-menu {
+    margin-top: 2rem;
+  }
+
+  .menu-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+  }
+
+  .menu-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    .menu-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* Menu item card */
+  .menu-item-card {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid #e5e7eb;
+  }
+
+  .menu-item-image {
+    width: 5rem;
+    height: 5rem;
+    flex-shrink: 0;
+  }
+
+  .menu-item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0.25rem;
+  }
+
+  .menu-item-content {
+    flex: 1;
+  }
+
+  .menu-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .menu-item-title {
+    font-weight: 500;
+  }
+
+  .menu-item-price {
+    font-weight: 700;
+  }
+
+  .menu-item-description {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-top: 0.25rem;
+  }
+
+  /* Sidebar */
+  .commerce-detail-sidebar {
+    margin-top: 2rem;
+  }
+
+  @media (min-width: 1024px) {
+    .commerce-detail-sidebar {
+      margin-top: 0;
+    }
+  }
+
+  .contact-card {
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid #e5e7eb;
+  }
+
+  .contact-card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .contact-card-separator {
+    height: 1px;
+    background-color: #e5e7eb;
+    margin: 1rem 0;
+  }
+
+  .contact-card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .contact-card-item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .contact-card-label {
+    font-size: 0.875rem;
+    color: #6b7280;
+  }
+
+  .contact-card-value {
+    font-weight: 500;
+  }
+
+  .contact-button {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+
+  .contact-button:hover {
+    background-color: #1d4ed8;
+  }
+
+  .not-found {
+    text-align: center;
+    padding: 3rem 0;
+  }
+
+  .loading {
+    text-align: center;
+    padding: 3rem 0;
+    font-size: 1.25rem;
+    color: #6b7280;
+  }

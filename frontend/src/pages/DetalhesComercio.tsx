@@ -1,123 +1,135 @@
-import { Box, Button, Card, CardContent, CardMedia, Grid, Typography } from '@mui/material';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import { ArrowLeft, Clock, MapPin, Phone } from '../components/Icons';
+import MenuItemCard from '../components/MenuItemCard';
+import "../styles/CommerceDetail.css";
+import { Comercio } from '../types/Comercio';
 
 const DetalhesComercio = () => {
-  const { id } = useParams();
-  const navigate = useNavigate();
-  const [comercio, setComercio] = useState<any>(null);
+  const { id } = useParams<{ id: string }>()
+  const [commerce, setCommerce] = useState<Comercio | null>(null)
+  const [loading, setLoading] = useState<boolean>(true)
 
   useEffect(() => {
-    const fetchComercio = async () => {
+    const fetchCommerce = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/api/comercios/${id}`);
-        setComercio(response.data);
+        if (id) {
+          const response = await axios.get(`http://localhost:8080/api/comercios/${id}`)
+          if (response.status === 200) {
+            setCommerce(response.data)
+          }
+        }
       } catch (error) {
-        console.error('Erro ao buscar detalhes do comércio:', error);
+        console.error("Error fetching commerce details:", error)
+      } finally {
+        setLoading(false)
       }
-    };
+    }
 
-    fetchComercio();
-  }, [id]);
+    fetchCommerce()
+  }, [id])
 
-  if (!comercio) {
-    return <Typography>Carregando...</Typography>;
+  if (!commerce) {
+    return (
+      <div className="not-found">
+        <h2>Comércio não encontrado</h2>
+        <Link to="/" className="back-link">
+          <ArrowLeft /> Voltar para lista
+        </Link>
+      </div>
+    )
   }
 
   return (
-    <div>
-      <Box sx={{ mb: 3 }}>
-        <Typography variant="h4">{comercio.nome}</Typography>
-        <Typography variant="subtitle1" color="text.secondary">
-          {comercio.descricao}
-        </Typography>
-      </Box>
+    <main className="commerce-detail-container">
+      <div className="back-navigation">
+        <Link to="/" className="back-link">
+          <ArrowLeft /> Voltar para lista
+        </Link>
+      </div>
 
-      <Card sx={{ mb: 3 }}>
-        <CardContent>
-          <Typography variant="h6" gutterBottom>
-            Informações Básicas
-          </Typography>
-          <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 3 }}>
-            <Box sx={{ flex: '1 1 300px' }}>
-              <Typography variant="subtitle2" color="text.secondary">
-                Endereço
-              </Typography>
-              <Typography variant="body1">{comercio.endereco}</Typography>
-            </Box>
+      <div className="commerce-detail-grid">
+        <div className="commerce-detail-main">
+          <div className="commerce-detail-image">
+            <img src={commerce.fotoUrl || "/placeholder.svg"} alt={commerce.nome} />
+          </div>
 
-            <Box sx={{ flex: '1 1 300px' }}>
-              <Typography variant="subtitle2" color="text.secondary">
-                Telefone
-              </Typography>
-              <Typography variant="body1">{comercio.telefone}</Typography>
-            </Box>
+          <div className="commerce-detail-info">
+            <div className="commerce-detail-header">
+              <div>
+                <h1 className="commerce-detail-title">{commerce.nome}</h1>
+                <span className="commerce-detail-badge">{commerce.tipoComercio}</span>
+              </div>
+              <div className="commerce-detail-delivery">
+                <p>Taxa de entrega</p>
+                <p className="commerce-detail-price">R$ {commerce.taxaEntrega.toFixed(2)}</p>
+              </div>
+            </div>
 
-            <Box sx={{ flex: '1 1 300px' }}>
-              <Typography variant="subtitle2" color="text.secondary">
-                Tipo de Comércio
-              </Typography>
-              <Typography variant="body1">{comercio.tipoComercio}</Typography>
-            </Box>
+            <p className="commerce-detail-description">{commerce.descricao}</p>
 
-            <Box sx={{ flex: '1 1 300px' }}>
-              <Typography variant="subtitle2" color="text.secondary">
-                Taxa de Entrega
-              </Typography>
-              <Typography variant="body1">R${comercio.taxaEntrega}</Typography>
-            </Box>
+            <div className="commerce-detail-contact">
+              <div className="contact-item">
+                <Phone />
+                <span>{commerce.telefone}</span>
+              </div>
+              <div className="contact-item">
+                <MapPin />
+                <span>{commerce.endereco}</span>
+              </div>
+              <div className="contact-item">
+                <Clock />
+                <span>{commerce.horarioFuncionamento}</span>
+              </div>
+            </div>
+          </div>
 
-            <Box sx={{ flex: '1 1 300px' }}>
-              <Typography variant="subtitle2" color="text.secondary">
-                Horário de Funcionamento
-              </Typography>
-              <Typography variant="body1">{comercio.horarioFuncionamento}</Typography>
-            </Box>
-          </Box>
-        </CardContent>
-      </Card>
+          <div className="commerce-menu">
+            <h2 className="menu-title">Cardápio</h2>
+            <div className="menu-grid">
+              {commerce.cardapio.map((item, index) => (
+                <MenuItemCard key={index} item={item} />
+              ))}
+            </div>
+          </div>
+        </div>
 
-      <Box sx={{ mb: 3 }}>
-        <Typography variant="h6" gutterBottom>
-          Cardápio
-        </Typography>
-        <Grid container spacing={3}>
-          {comercio.cardapio.map((item: any, index: number) => (
-            <Grid item xs={12} sm={6} md={4} key={index}>
-              <Card>
-                <CardMedia
-                  component="img"
-                  height="140"
-                  image={item.fotoUrl}
-                  alt={item.nome}
-                />
-                <CardContent>
-                  <Typography variant="h6">{item.nome}</Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    {item.descricao}
-                  </Typography>
-                  <Typography variant="body1" sx={{ mt: 1 }}>
-                    R${item.preco}
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
-      </Box>
+        <div className="commerce-detail-sidebar">
+          <div className="contact-card">
+            <h2 className="contact-card-title">Informações de Contato</h2>
+            <div className="contact-card-separator"></div>
 
-      <Box sx={{ mt: 3, display: 'flex', justifyContent: 'flex-end' }}>
-        <Button
-          variant="outlined"
-          onClick={() => navigate('/comercios')}
-          sx={{ mr: 1 }}
-        >
-          Voltar
-        </Button>
-      </Box>
-    </div>
-  );
-};
+            <div className="contact-card-info">
+              <div className="contact-card-item">
+                <p className="contact-card-label">Telefone</p>
+                <p className="contact-card-value">{commerce.telefone}</p>
+              </div>
+
+              <div className="contact-card-item">
+                <p className="contact-card-label">Endereço</p>
+                <p className="contact-card-value">{commerce.endereco}</p>
+              </div>
+
+              <div className="contact-card-item">
+                <p className="contact-card-label">Horário de Funcionamento</p>
+                <p className="contact-card-value">{commerce.horarioFuncionamento}</p>
+              </div>
+
+              <div className="contact-card-item">
+                <p className="contact-card-label">Tipo de Comércio</p>
+                <p className="contact-card-value">{commerce.tipoComercio}</p>
+              </div>
+            </div>
+
+            <div className="contact-card-separator"></div>
+
+            <button className="contact-button">Entrar em Contato</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  )
+}
 
 export default DetalhesComercio;

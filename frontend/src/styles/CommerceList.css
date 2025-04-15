@@ -1,0 +1,152 @@
+/* Main container */
+.commerce-list-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+
+  .commerce-list-title {
+    font-size: 1.875rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+  }
+
+  .no-commerces {
+    text-align: center;
+    padding: 3rem 0;
+    color: #6b7280;
+  }
+
+  .commerce-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .commerce-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .commerce-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  /* Commerce Card */
+  .commerce-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+    height: 100%;
+    transition: box-shadow 0.3s ease;
+  }
+
+  .commerce-card:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+
+  .commerce-image {
+    height: 12rem;
+    width: 100%;
+    position: relative;
+  }
+
+  .commerce-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .commerce-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+  }
+
+  .commerce-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+  }
+
+  .commerce-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .commerce-badge {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    border: 1px solid #e5e7eb;
+    background-color: #f9fafb;
+  }
+
+  .commerce-description {
+    color: #6b7280;
+    margin-bottom: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .commerce-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .commerce-address,
+  .commerce-phone {
+    display: flex;
+    align-items: center;
+    font-size: 0.875rem;
+    color: #6b7280;
+  }
+
+  .commerce-address svg,
+  .commerce-phone svg {
+    margin-right: 0.25rem;
+  }
+
+  .commerce-footer {
+    border-top: 1px solid #e5e7eb;
+    padding: 1rem 1.5rem;
+  }
+
+  .commerce-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .commerce-delivery {
+    font-size: 0.875rem;
+  }
+
+  .commerce-hours {
+    font-size: 0.75rem;
+    color: #6b7280;
+  }
+
+  .card-link {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .loading {
+    text-align: center;
+    padding: 3rem 0;
+    font-size: 1.25rem;
+    color: #6b7280;
+  }

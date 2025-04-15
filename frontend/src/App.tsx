@@ -21,9 +21,9 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/comercios" element={<Comercios />} />
-              <Route path="/comercios/novo" element={<NovoComercio />} />
-              <Route path="/comercios/:id" element={<DetalhesComercio />} />
-              <Route path="/comercios/:id/editar" element={<EditarComercio />} />
+              <Route path="/comercio/novo" element={<NovoComercio />} />
+              <Route path="/comercio/:id" element={<DetalhesComercio />} />
+              <Route path="/comercio/:id/editar" element={<EditarComercio />} />
             </Routes>
           </Layout>
         </BrowserRouter>
